@@ -1,0 +1,42 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { LogoList } from '../components/ReactComponents/LogoList/LogoList';
+import { ReviewCard } from '../components/ReactComponents/ReviewCard/ReviewCard';
+import { SITE_DESCRIPTION, SITE_TITLE, dummyReviews } from '../consts';
+
+const firstRow = dummyReviews.slice(0, dummyReviews.length / 2);
+const secondRow = dummyReviews.slice(dummyReviews.length / 2);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="mb-12">
+				<h2>Review Card Component</h2>
+				<ReviewCard {...dummyReviews[Math.floor(Math.random() * 9)]} client:visible />
+			</div>
+
+			<div class="mb-12">
+				<h2>LogoList Component</h2>
+				<div
+				class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl mb-24"
+				>
+				<LogoList pauseOnHover className="[--duration:20s]" client:visible>
+					{firstRow.map((review) => <ReviewCard {...review} client:visible />)}
+				</LogoList>
+				<LogoList reverse pauseOnHover className="[--duration:30s]" client:visible>
+					{secondRow.map((review) => <ReviewCard {...review} client:visible />)}
+				</LogoList>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
