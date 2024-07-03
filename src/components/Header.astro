@@ -2,16 +2,18 @@
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import SocialLinks from './SocialLinks.astro';
+
+const { lang } = Astro.props;
 ---
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/lib">Components Lib</HeaderLink>
+		<h2 class="max-w-20 md:max-w-none"><a href="/">{SITE_TITLE}</a></h2>
+		<div class="internal-links flex flex-nowrap">
+			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/">{lang === 'fr' ? 'Accueil' : 'Home'}</HeaderLink>
+			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/blog">Blog</HeaderLink>
+			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/about">{lang === 'fr' ? 'A propos' : 'About'}</HeaderLink>
+			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/lib">{lang === 'fr' ? 'Librairie' : 'Library'}</HeaderLink>
 		</div>
 		<SocialLinks />
 	</nav>
@@ -38,7 +40,6 @@ import SocialLinks from './SocialLinks.astro';
 		justify-content: space-between;
 	}
 	nav a {
-		padding: 1em 0.5em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
 		text-decoration: none;

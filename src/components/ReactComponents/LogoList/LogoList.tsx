@@ -1,6 +1,4 @@
-import clsx, { type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
+import { cn } from "../../../consts";
 
 interface LogoListProps {
   className?: string;
@@ -10,10 +8,6 @@ interface LogoListProps {
   vertical?: boolean;
   repeat?: number;
   [key: string]: any;
-}
-
-const cn = (...inputs: ClassValue[]) => {
-    return twMerge(clsx(inputs));
 }
 
 export const LogoList = ({
@@ -34,7 +28,7 @@ export const LogoList = ({
           "flex-row": !vertical,
           "flex-col": vertical,
         },
-        className,
+        className
       )}
     >
       {Array(repeat)
@@ -54,4 +48,4 @@ export const LogoList = ({
         ))}
     </div>
   );
-}
+};

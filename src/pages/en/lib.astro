@@ -1,24 +1,24 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import { LogoList } from "../components/ReactComponents/LogoList/LogoList";
-import { ReviewCard } from "../components/ReactComponents/ReviewCard/ReviewCard";
-import { SITE_DESCRIPTION, SITE_TITLE, cn, dummyReviews } from "../consts";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { LogoList } from "../../components/ReactComponents/LogoList/LogoList";
+import { ReviewCard } from "../../components/ReactComponents/ReviewCard/ReviewCard";
+import { SITE_DESCRIPTION, SITE_TITLE, cn, dummyReviews } from "../../consts";
 
 const firstRow = dummyReviews.slice(0, dummyReviews.length / 2);
 const secondRow = dummyReviews.slice(dummyReviews.length / 2);
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
     <Header lang="fr"/>
     <main>
-      <h1 class={cn("md:text-40 md:leading-48 text-28 leading-32 font-sans")}>Vous trouverez ici tous les composants que j'aime utiliser</h1>
+      <h1 class={cn("md:text-40 md:leading-48 text-28 leading-32 font-sans")}>Here you can find all components I like to use</h1>
       <div class="mb-12">
         <h2>Review Card Component</h2>
         <ReviewCard
@@ -54,6 +54,6 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
         </div>
       </div>
     </main>
-    <Footer lang="fr"/>
+    <Footer lang="en"/>
   </body>
 </html>
