@@ -4,7 +4,7 @@
 import clsx, { type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export const SITE_TITLE = 'Kev\'s journey';
+export const SITE_TITLE = 'Kevin Zid';
 export const SITE_DESCRIPTION = 'Welcome to my adventure!';
 export const cn = (...inputs: ClassValue[]) => {
     return twMerge(clsx(inputs));
