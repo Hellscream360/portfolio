@@ -6,9 +6,9 @@ import SocialLinks from './SocialLinks.astro';
 const { lang } = Astro.props;
 ---
 
-<header>
+<header class="sticky top-0 border-b border-yellow-100 pb-3">
 	<nav>
-		<h2 class="max-w-20 md:max-w-none"><a href="/">{SITE_TITLE}</a></h2>
+		<h2 class="max-w-20 text-shadow-sm shadow-yellow-500 md:max-w-none"><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links flex flex-nowrap">
 			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/">{lang === 'fr' ? 'Accueil' : 'Home'}</HeaderLink>
 			<HeaderLink class={'md:px-4 md:py-2 p-1 text-nowrap'} href="/blog">Blog</HeaderLink>
