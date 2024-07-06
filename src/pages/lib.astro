@@ -5,6 +5,8 @@ import Header from "../components/Header.astro";
 import { LogoList } from "../components/CSSComponents/LogoList/LogoList";
 import { ReviewCard } from "../components/CSSComponents/ReviewCard/ReviewCard";
 import { SITE_DESCRIPTION, SITE_TITLE, cn, dummyReviews } from "../consts";
+import { Accordion } from "../components/CSSComponents/Accordion/Accordion";
+import { Tag } from "../components/CSSComponents/Tag/Tag";
 
 const firstRow = dummyReviews.slice(0, dummyReviews.length / 2);
 const secondRow = dummyReviews.slice(dummyReviews.length / 2);
@@ -16,11 +18,23 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Header lang="fr"/>
-    <main class="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
-      <h1 class={cn("md:text-40 md:leading-48 text-28 leading-32 font-sans")}>Vous trouverez ici tous les composants que j'aime utiliser</h1>
-      <div class="mb-12">
+    <Header lang="fr" />
+    <main
+      class="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto"
+    >
+      <h1 class={cn("md:text-40 md:leading-48 text-28 leading-32 font-sans")}>
+        Components library
+      </h1>
+      <div class="mb-12 relative">
         <h2>Review Card Component</h2>
+        <div class="absolute top-0 right-0">
+          <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
+            >#HTML</Tag
+          >
+          <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
+            >#CSS</Tag
+          >
+        </div>
         <ReviewCard
           {...dummyReviews[Math.floor(Math.random() * 9)]}
           client:visible
@@ -28,7 +42,17 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
       </div>
 
       <div class="mb-12">
-        <h2>LogoList Component</h2>
+        <div class="flex flex-row items-center justify-between flex-nowrap">
+          <h2>LogoList Component</h2>
+          <div>
+            <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
+              >#HTML</Tag
+            >
+            <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
+              >#CSS</Tag
+            >
+          </div>
+        </div>
         <div
           class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl mb-24"
         >
@@ -53,7 +77,43 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
           </LogoList>
         </div>
       </div>
+
+      <div class="mb-12">
+        <div class="flex flex-row items-center justify-between flex-nowrap">
+          <h2>Accordion Component</h2>
+          <div>
+            <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
+              >#HTML</Tag
+            >
+            <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
+              >#CSS</Tag
+            >
+          </div>
+        </div>
+        <Accordion
+          section={[
+            { title: "Section 1", content: "Content 1" },
+            { title: "Section 2", content: "Content 2" },
+          ]}
+          client:visible
+        />
+      </div>
+
+      <div class="mb-12 relative">
+        <h2>Tag Component</h2>
+        <div class="absolute top-0 right-0">
+          <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
+            >#HTML</Tag
+          >
+          <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
+            >#CSS</Tag
+          >
+        </div>
+        <Tag link="#" color="yellow" backgroundColor="black" client:visible
+          >#Tag Title</Tag
+        >
+      </div>
     </main>
-    <Footer lang="fr"/>
+    <Footer lang="fr" />
   </body>
 </html>

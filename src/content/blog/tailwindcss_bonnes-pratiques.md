@@ -1,7 +1,7 @@
 ---
 title: "Tailwind CSS: Les bonnes pratiques"
 description: "Les bonnes pratiques que je met en place avec Tailwind CS"
-category: "Taiwind CSS"
+category: "TailwindCSS"
 pubDate: "Jul 05 2024"
 lang: "fr"
 heroImage: "/tailwindcss_logo.jpg"

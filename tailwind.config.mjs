@@ -1,5 +1,6 @@
-const plugin = require('tailwindcss/plugin');
+import plugin from "tailwindcss/plugin";
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -10,9 +11,9 @@ export default {
         mono: ["'Fira Code'", "monospace"],
       },
       textShadow: {
-        sm: '0 0.1px 0.1px var(--tw-shadow-color)',
-        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
-        lg: '0 8px 16px var(--tw-shadow-color)',
+        sm: "0 0.1px 0.1px var(--tw-shadow-color)",
+        DEFAULT: "0 2px 4px var(--tw-shadow-color)",
+        lg: "0 8px 16px var(--tw-shadow-color)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

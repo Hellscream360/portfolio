@@ -1,46 +1,72 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { Tag } from "../components/CSSComponents/Tag/Tag";
+import { getColorByCategory } from "../consts";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, category, pubDate, updatedDate, heroImage, lang } = Astro.props;
+const { title, description, category, pubDate, updatedDate, heroImage, lang } =
+  Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-	<body>
-		<Header lang={lang} />
-		<main class="w-[calc(100%-2em)] max-w-full m-0">
-			<article>
-				<div class="w-full">
-					{heroImage && <img class="block border-2 border-yellow-400 mx-auto rounded-full shadow-xl object-cover" width={320} src={heroImage} alt="" />}
-				</div>
-				<div class="w-full max-w-full md:max-w-2xl lg:max-w-7xl m-auto p-4 text-[var(--gray-dark)]">
-					<div class="mb-4 text-center leading-none py-4">
-						<div class="mb-4 text-[var(--gray)]">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="italic">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1 class="mb-4">{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer lang={lang}/>
-	</body>
+  <body>
+    <Header lang={lang} />
+    <main class="w-[calc(100%-2em)] max-w-full m-0 pt-10">
+      <article>
+        <div class="w-full">
+          {
+            heroImage && (
+              <img
+                class="block border-2 border-yellow-400 mx-auto rounded-full shadow-xl object-cover"
+                width={320}
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
+        <div
+          class="w-full max-w-full md:max-w-2xl lg:max-w-7xl m-auto p-4 text-[var(--gray-dark)]"
+        >
+          <div class="mb-4 text-center leading-none py-4">
+            <div class="mb-4 text-[var(--gray)]">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="italic">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <h1 class="mb-4">{title}</h1>
+            {
+              category && (
+                <Tag
+                  link="#"
+                  color={getColorByCategory(category || "")}
+                  backgroundColor="white"
+                  client:visible
+                >
+                  #{category}
+                </Tag>
+              )
+            }
+            <hr />
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+    <Footer lang={lang} />
+  </body>
 </html>

@@ -27,30 +27,30 @@ export const textUppercaseBig = "uppercase text-20 leading-24 font-sans";
 export const textUppercaseCaption = "uppercase text-12 leading-16 font-sans";
 
 export interface TypographyProps {
-  Children: ReactNode;
-  classNames: string;
+  children: ReactNode;
+  classNames?: string;
 }
 
-export const h1Heading = ({ Children, classNames }: TypographyProps) => {
-  return <h1 className={cn(title1, classNames)}>{Children}</h1>;
+export const h1Heading = ({ children, classNames }: TypographyProps) => {
+  return <h1 className={cn(title1, classNames)}>{children}</h1>;
 };
 
-export const h2Heading = ({ Children, classNames }: TypographyProps) => {
-  return <h2 className={cn(title2, classNames)}>{Children}</h2>;
+export const h2Heading = ({ children, classNames }: TypographyProps) => {
+  return <h2 className={cn(title2, classNames)}>{children}</h2>;
 };
 
-export const h3Heading = ({ Children, classNames }: TypographyProps) => {
-  return <h3 className={cn(title3, classNames)}>{Children}</h3>;
+export const h3Heading = ({ children, classNames }: TypographyProps) => {
+  return <h3 className={cn(title3, classNames)}>{children}</h3>;
 };
 
-export const largeP = ({ Children, classNames }: TypographyProps) => {
-  return <p className={cn(textBodyLarge, classNames)}>{Children}</p>;
+export const largeP = ({ children, classNames }: TypographyProps) => {
+  return <p className={cn(textBodyLarge, classNames)}>{children}</p>;
 };
 
-export const nP = ({ Children, classNames }: TypographyProps) => {
-  return <p className={cn(textBody, classNames)}>{Children}</p>;
+export const Np = ({ children, classNames }: TypographyProps) => {
+  return <p className={cn(textBody, classNames)}>{children}</p>;
 };
 
-export const upperP = ({ Children, classNames }: TypographyProps) => {
-  return <p className={cn(textBodyUppercase, classNames)}>{Children}</p>;
+export const upperP = ({ children, classNames }: TypographyProps) => {
+  return <p className={cn(textBodyUppercase, classNames)}>{children}</p>;
 };

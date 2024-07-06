@@ -5,9 +5,10 @@ import Footer from "../../components/Footer.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import { Np } from "../../components/typography";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
@@ -17,8 +18,10 @@ const posts = (await getCollection("blog")).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Header lang="fr"/>
-    <main class="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto">
+    <Header lang="fr" />
+    <main
+      class="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto"
+    >
       <section class="w-max mx-auto">
         <ul>
           {
@@ -31,10 +34,10 @@ const posts = (await getCollection("blog")).sort(
                     src={post.data.heroImage}
                     alt=""
                   />
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="date">
+                  <h3 class="title">{post.data.title}</h3>
+                  <Np classNames="text-blue-500 -mt-4">
                     <FormattedDate date={post.data.pubDate} />
-                  </p>
+                  </Np>
                 </a>
               </li>
             ))
@@ -42,6 +45,6 @@ const posts = (await getCollection("blog")).sort(
         </ul>
       </section>
     </main>
-    <Footer lang="fr"/>
+    <Footer lang="fr" />
   </body>
 </html>
