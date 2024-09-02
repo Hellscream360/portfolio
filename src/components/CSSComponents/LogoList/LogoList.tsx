@@ -19,6 +19,7 @@ export const LogoList = ({
   repeat = 4,
   ...props
 }: LogoListProps) => {
+  
   return (
     <div
       {...props}

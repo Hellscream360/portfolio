@@ -2,6 +2,7 @@
 import BaseHead from "../../components/BaseHead.astro";
 import { Accordion } from "../../components/CSSComponents/Accordion/Accordion";
 import { LogoList } from "../../components/CSSComponents/LogoList/LogoList";
+import { SwipeableLogoList } from "../../components/CSSComponents/LogoList/SwipeableLogoList";
 import { ReviewCard } from "../../components/CSSComponents/ReviewCard/ReviewCard";
 import { Tag } from "../../components/CSSComponents/Tag/Tag";
 import Footer from "../../components/Footer.astro";
@@ -28,18 +29,14 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
       <div class="mb-12 relative">
         <h2>Review Card Component</h2>
         <div class="absolute top-0 right-0">
-          <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
-            >#HTML</Tag
-          >
-          <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
-            >#CSS</Tag>
+          <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible>#HTML</Tag>
+          <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible>#CSS</Tag>
         </div>
         <ReviewCard
           {...dummyReviews[Math.floor(Math.random() * 9)]}
           client:visible
         />
       </div>
-
       <div class="mb-12 relative">
         <h2>LogoList Component</h2>
         <div class="absolute top-0 right-0">
@@ -71,6 +68,42 @@ const secondRow = dummyReviews.slice(dummyReviews.length / 2);
               ))
             }
           </LogoList>
+        </div>
+      </div>
+
+      <div class="mb-12 relative">
+        <h2>SwipeableLogoList Component</h2>
+        <div class="absolute top-0 right-0">
+          <Tag link="#" color="#dd4b25" backgroundColor="white" client:visible
+            >#HTML</Tag
+          >
+          <Tag link="#" color="#1da1f2" backgroundColor="white" client:visible
+            >#CSS</Tag>
+          <Tag link="#" color="#007bff" backgroundColor="white" client:visible
+            >#React</Tag>
+        </div>
+        <div
+          class="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background py-20 md:shadow-xl mb-24"
+        >
+          <SwipeableLogoList pauseOnHover className="[--duration:5s]" client:visible>
+            {
+              firstRow.map((review) => (
+                <ReviewCard {...review} client:visible />
+              ))
+            }
+          </SwipeableLogoList>
+          <SwipeableLogoList
+            reverse
+            pauseOnHover
+            className="[--duration:10s]"
+            client:visible
+          >
+            {
+              secondRow.map((review) => (
+                <ReviewCard {...review} client:visible />
+              ))
+            }
+          </SwipeableLogoList>
         </div>
       </div>
 
